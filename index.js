@@ -9,35 +9,34 @@ push method: It's literally use to add a new element to an array, usually at the
 indexOf method: To get the index of a particular element in an array. 
 Splice method: Use primarily to add new items to an array but when used with indexOf and with dinstict parameter setting, it's perform different tasks, which is to delete or take out an element in an array.
 
-3.const likePost = async(req, res)=>{
-  const myPost =[
-  {
-    id: "66c54cca55b1d6c213319859",
-    title: "my first title",
-    desc: "learning backend in axia afrika",
-    previewPix: "our preview pix",
-    detailPix: "our detail Pix",
-    creatorId: "66c4dbcdde4d9f8245f928b3",
-    likes: ["Femi", "Zidane", "Emmanuel"],
-  }
-]
+
+
+3, const likePost = async (req, res) => {
+  const {name} = req.body;
+  const myPost = [
+    {
+      id: "66c54cca55b1d6c213319859",
+      title: "my first title",
+      desc: "learning backend in axia afrika",
+      previewPix: "our preview pix",
+      detailPix: "our detail Pix",
+      creatorId: "66c4dbcdde4d9f8245f928b3",
+      likes: ["Femi", "Zidane", "Emmanuel"],
+    },
+  ];
   const Length = myPost.length;
   console.log(Length);
   const numerousLikes = myPost.likes;
   console.log(numerousLikes);
   const checkUserInArray = numerousLikes.includes(name);
   console.log(checkUserInArray);
-  if(!checkUserInArray){
+  if (!checkUserInArray) {
     numerousLikes.push(name);
-  }else{
+  } else {
     const index = numerousLikes.indexOf(name);
-    numerousLikes.splice(index, 0)
+    numerousLikes.splice(index, 0);
   }
   myPost.likes = numerousLikes;
-  console.log(myPost)
-  res.json({message: "Like added"})
+  console.log(myPost);
+  res.json({ message: "Like added" });
 };
-
-
-
-
